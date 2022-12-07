@@ -1,6 +1,4 @@
-import type { Options } from '@wdio/types'
-
-export const config: Options.Testrunner = {
+export const config = {
     //
     // ====================
     // Runner Configuration
@@ -8,8 +6,12 @@ export const config: Options.Testrunner = {
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
     autoCompileOpts: {
+        autoCompile: true,
+        // see https://github.com/TypeStrong/ts-node#cli-and-programmatic-options
+        // for all available options
         tsNodeOpts: {
-            project: '.\tsconfig.json'
+            transpileOnly: true,
+            project: './tsconfig.json'
         }
     },
     
@@ -31,7 +33,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        '.\features\**\*.feature'
+        './features/**/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -80,7 +82,7 @@ export const config: Options.Testrunner = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -149,7 +151,7 @@ export const config: Options.Testrunner = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['C:\wdio-mentorship\features\step-definitions\steps.ts'],
+        require: ['./features/**/*.ts'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)

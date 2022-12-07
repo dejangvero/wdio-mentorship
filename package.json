@@ -7,16 +7,22 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@wdio/allure-reporter": "^8.0.7",
-        "@wdio/cli": "^8.0.7",
-        "@wdio/cucumber-framework": "^8.0.7",
-        "@wdio/local-runner": "^8.0.7",
-        "@wdio/selenium-standalone-service": "^8.0.7",
+        "@types/cucumber": "^7.0.0",
+        "@types/selenium-standalone": "^7.0.1",
+        "@wdio/allure-reporter": "^7.7.6",
+        "@wdio/cli": "^7.19.7",
+        "@wdio/cucumber-framework": "^7.19.7",
+        "@wdio/local-runner": "^7.19.7",
+        "@wdio/selenium-standalone-service": "^7.19.5",
+        "@wdio/types": "^7.19.5",
+        "allure-commandline": "^2.20.1",
+        "kill-port-process": "^3.1.0",
         "ts-node": "^10.9.1",
         "typescript": "^4.9.3",
         "wdio-wait-for": "^3.0.1"
     },
     "scripts": {
-        "wdio": "wdio run wdio.conf.js"
+        "port:kill": "kill-port 4444",
+        "wdio": "npm run port:kill && npx wdio wdio.conf.ts"        
     }
 }
