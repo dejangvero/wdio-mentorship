@@ -57,7 +57,7 @@ class CheckoutPage extends Page{
         var sum:number = 0;
         var arrayOfNumbers =  await this.getArrayOfIndividualCheckoutPricesPromise();
         for (let i = 0; i < arrayOfNumbers.length; i++) {
-                sum = sum + arrayOfNumbers[i];
+                sum += arrayOfNumbers[i];
         };
         return sum;
     }
