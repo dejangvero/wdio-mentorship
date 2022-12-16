@@ -8,8 +8,9 @@ const pages = {
     checkout: CheckoutPage
 }
 
-When('I go to the checkout page', async () => {
-    await CheckoutPage.goToCheckout('Dejan', 'Gvero', '21235');
+When('I go to the checkout page with firstname: {string}, lastname: {string} and zipcode: {string}', 
+    async (firstName:string, lastName:string, zipCode:string) => {
+    await CheckoutPage.goToCheckout(firstName, lastName, zipCode);
 });
 
 Then('I expect items total price to be {float}', async (price:number) => {    
