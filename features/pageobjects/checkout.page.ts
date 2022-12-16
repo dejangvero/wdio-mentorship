@@ -43,31 +43,24 @@ class CheckoutPage extends Page{
     }    
 
     public async getArrayOfIndividualCheckoutPricesPromise():Promise<number[]> {
-        var listOfPrices:number[] = []
-        this.listOfPricesCheckout.forEach(async element => {
+        var listOfPrices:number[] = []        
+        for await (var element of await this.listOfPricesCheckout) {
             var stringToTrim = await element.getText();
             var elementString = stringToTrim.split("$").pop()
             var elementNumber:number = +elementString;
             listOfPrices.push(elementNumber);
-        });
+        }
         return listOfPrices;
-    }
+    }    
 
-    public async totalSumWithoutTax() {
-        var total:number = 0
-        for (let i = 0; i < this.getSummarySubTotalPricePromise.length; i++) {
-            total = total + this.getSummarySubTotalPricePromise[i];
+    public async sumOfIndividualPrices():Promise<number> {
+        var sum:number = 0;
+        var arrayOfNumbers =  await this.getArrayOfIndividualCheckoutPricesPromise();
+        for (let i = 0; i < arrayOfNumbers.length; i++) {
+                sum = sum + arrayOfNumbers[i];
         };
-        return total;        
+        return sum;
     }
-
-    // public async  sumOfIndividualPrices() {
-    //     var sum:number = 0;     
-    //     for (let i = 0; i < this.getArrayOfIndividualCheckoutPricesPromise.length; i++) {
-    //             sum = sum + await this.getArrayOfIndividualCheckoutPricesPromise[i];
-    //     };
-    //     return sum;
-    // }
 
     public async goToCheckout(fistName:string, lastName:string, zipCode:string) {
         await InventoryPage.cartButton.click();
