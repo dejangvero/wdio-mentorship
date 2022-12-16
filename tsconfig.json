@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "moduleResolution": "NodeNext",
-        "module": "NodeNext",
+        "moduleResolution": "Node",
+        "module": "CommonJS",
         "types": [
             "node",
             "@wdio/globals/types",
@@ -10,6 +10,6 @@
             "@wdio/selenium-standalone-service",
             "webdriverio/async"
         ],
-        "target": "ES2022"
+        "target": "ES2021"
     }
 }
