@@ -65,16 +65,16 @@ export const config = {
         maxInstances: 1,        
         browserName: 'chrome',
         acceptInsecureCerts: true        
-    },
-    {        
-        maxInstances: 1,        
-        browserName: 'firefox',
-        acceptInsecureCerts: true        
-    },
-    {        
-        maxInstances: 1,        
-        browserName: 'MicrosoftEdge',
-        acceptInsecureCerts: true        
+    // },
+    // {        
+    //     maxInstances: 1,        
+    //     browserName: 'firefox',
+    //     acceptInsecureCerts: true        
+    // },
+    // {        
+    //     maxInstances: 1,        
+    //     browserName: 'MicrosoftEdge',
+    //     acceptInsecureCerts: true        
     }],
     //
     // ===================
@@ -146,13 +146,28 @@ export const config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: [
-        [
-            'allure',
-             {
-                outputDir: 'allure-results'
-             }
-        ]
-    ],
+
+        'spec',
+    
+    
+    
+        ['allure', {
+    
+          outputDir: './reports/allure-results',
+    
+          disableWebdriverStepsReporting: true,
+    
+          disableWebdriverScreenshotsReporting: false,
+    
+          useCucumberStepReporter: true,
+    
+        }],    
+    
+        
+    
+    
+    
+      ],
 
 
     //
