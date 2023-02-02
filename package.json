@@ -23,7 +23,7 @@
         "wdio-wait-for": "^3.0.1"
     },
     "scripts": {
-        "port:kill": "kill-port 4444",
-        "wdio": "npm run port:kill && npx wdio wdio.conf.ts"
+        "port:kill": "kill-port 4444",      
+        "wdio": "npm run port:kill && npx wdio wdio.conf.ts && allure generate --clean && allure open"
     }
 }
