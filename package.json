@@ -9,7 +9,7 @@
     "devDependencies": {
         "@types/cucumber": "^7.0.0",
         "@types/selenium-standalone": "^7.0.1",
-        "@wdio/allure-reporter": "^7.7.6",
+        "@wdio/allure-reporter": "^7.30.0",
         "@wdio/cli": "^7.19.7",
         "@wdio/cucumber-framework": "^7.19.7",
         "@wdio/local-runner": "^7.19.7",
@@ -23,7 +23,8 @@
         "wdio-wait-for": "^3.0.1"
     },
     "scripts": {
-        "port:kill": "kill-port 4444",      
-        "wdio": "npm run port:kill && npx wdio wdio.conf.ts && allure generate --clean && allure open"
+        "port:kill": "kill-port 4444",
+        "allure:history": "mkdir allure-results\\history || echo 'history folder already in place...continuing :)' && copy allure-report\\history\\*.json .\\allure-results\\history && echo 'Allure trends updated!'",
+        "wdio": "npm run port:kill && npm run allure:history && npx wdio wdio.conf.ts && allure generate --clean && allure open"
     }
 }

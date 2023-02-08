@@ -4,4 +4,4 @@ Feature: E2E validation for hovering elements
 
             Given I am on the hover page
              When I hover the "second" avatar from the left
-             Then I expect to see the name: "user3"
+             Then I expect to see the name: "user2"
