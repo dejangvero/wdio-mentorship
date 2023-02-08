@@ -1,3 +1,4 @@
+@regression
 Feature: E2E validation for popup authentication
 
         Scenario Outline: As a user, I want to enter valid credentials and login

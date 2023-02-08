@@ -1,3 +1,4 @@
+@regression
 Feature: E2E validation for file upload logic
 
         Scenario Outline: As a user, I want to successfully upload a file
