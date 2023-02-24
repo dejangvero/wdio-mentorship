@@ -29,7 +29,7 @@
         "pretest": "del allure-results\\*.xml",
         "allure:history": "mkdir allure-results\\history || echo 'history folder already in place...continuing :)' && copy allure-report\\history\\*.json .\\allure-results\\history && echo 'Allure trends updated!' && npm run pretest",
         "allure:make": "allure generate allure-results --clean -o allure-report && allure open allure-report",
-        "wdio:regression": "npm run port:kill && npm run allure:history && npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@regression' ; npm run allure:make",
-        "wdio:smoke": "npm run port:kill && npm run allure:history && npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' ; npm run allure:make"
+        "wdio:regression": "npm run port:kill && npm run allure:history && npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@regression' ^ npm run allure:make",
+        "wdio:smoke": "npm run port:kill && npm run allure:history && npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@smoke' & npm run allure:make"        
     }
 }
