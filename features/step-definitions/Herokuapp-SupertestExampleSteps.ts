@@ -29,3 +29,8 @@ Then('I want to receive the following response in the body:', async (docString:s
     const jsonBody:JSON = response.body;
     expect(jsonBody).toStrictEqual(JSON.parse(docString));
 });
+
+Given('I send a POST request to {string} endpoint with body:', async (endpoint:string, docString:string) => {
+    response = await request.post(endpoint).send(JSON.parse(docString));      
+});
+

@@ -1,12 +1,13 @@
+@smoke
 Feature: Example APi testing using supertest and https://reqres.in/
 
-    @smoke
+
     Scenario: As a user, I want to get the list of users and assert that i got a response body that contains users
         Given I send a GET request to REGRES GET USERS Endpoint
         Then I receive a list of users
 
-    @smoke
-    Scenario: As i user, i want to get a single user by ID
+
+    Scenario: As i user, I want to get a single user by ID
         Given I send a GET user request with ID: 2
         Then I want to receive the following response in the body:
             """
@@ -22,5 +23,21 @@ Feature: Example APi testing using supertest and https://reqres.in/
                     "url": "https://reqres.in/#support-heading",
                     "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
                 }
+            }
+            """
+
+    Scenario: As i visitor, I want to register via API
+        Given I send a POST request to "/register" endpoint with body:
+            """
+            {
+                "email": "eve.holt@reqres.in",
+                "password": "pistol"
+            }
+            """
+        Then I want to receive the following response in the body:
+            """
+            {
+                "id": 4,
+                "token": "QpwL5tke4Pnpja7X4"
             }
             """
