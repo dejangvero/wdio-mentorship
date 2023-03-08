@@ -1,4 +1,3 @@
-@smoke
 Feature: E2E validation for hovering elements
 
         Scenario Outline: As a user, I want to hover over a profile avatar and see the name

@@ -41,3 +41,9 @@ Feature: Example APi testing using supertest and https://reqres.in/
                 "token": "QpwL5tke4Pnpja7X4"
             }
             """
+
+    Scenario: As i visitor, I want to add a user via API
+        Given I add an user with name "morpheus" and job "leader"
+        Then I see the request was successful
+    
+        
