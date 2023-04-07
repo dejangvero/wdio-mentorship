@@ -40,11 +40,12 @@ Given('I login to BR Modelo Web via API',  async () => {
     .expect(200)
     .then(async (response) => {        
         await browser.setCookies([
-            {name: 'userId', value: '642fe8a642659e8e4c6dd0f0'},
-            {name: 'sessionId', value: 'Zs_JgfsJ3P8INADKDeh2bEYKc0G6hK7V'}
+            {name: 'userId', value: response.body.userId},
+            {name: 'sessionId', value: response.body.sessionId}
         ])
         await browser.url('/#!/main');
-      });  
+      });
+    console.log(response)
 });
 
 // When('I navigate to BR Modelo Web page',  async () => {
