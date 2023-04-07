@@ -1,4 +1,3 @@
-@smoke
 Feature: Example APi testing using supertest and https://reqres.in/
 
 
