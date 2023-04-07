@@ -10,6 +10,5 @@ Feature: API + UI test
 
     Scenario Outline: As a user, i want to login via API and continue with the UI
 
-        Given I login to BR Modelo Web via API
-        # And I navigate to BR Modelo Web page
+        Given I login to BR Modelo Web via API        
         Then I will see the Models header

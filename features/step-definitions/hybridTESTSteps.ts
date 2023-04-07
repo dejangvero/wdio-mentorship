@@ -29,33 +29,28 @@ const request = supertest('https://app.brmodeloweb.com');
 //     expect(logoutButton.getText()).toStrictEqual('Logout');
 // });
 
-Given('I login to BR Modelo Web via API',  async () => {
-    
+Given('I login to BR Modelo Web via API',  async () => {    
     const payload = {username: 'dXNpbmcxMjNAeW9wbWFpbC5jb20', password: 'VXNpbmcxMjM' };
-    const response = await request
+    await request
     .post('/users/login')           
     .send(payload)
     .set('Content-Type', 'application/json;charset=UTF-8')
     .set('Accept', 'application/json')   
     .expect(200)
-    .then(async (response) => {        
+    .then(async (response) => {
+        await browser.url('https://app.brmodeloweb.com/#!/')                      
         await browser.setCookies([
             {name: 'userId', value: response.body.userId},
             {name: 'sessionId', value: response.body.sessionId}
-        ])
-        await browser.url('/#!/main');
-      });
-    console.log(response)
+        ])        
+        await browser.url('https://app.brmodeloweb.com/#!/main');        
+        
+      });   
 });
 
-// When('I navigate to BR Modelo Web page',  async () => {
-//     await browser.url(`https://practice.automationtesting.in/my-account/`);
-// });
-
-
-Then('I will see the Models header',  async () => {
-    const modelsLabel = await $("h2");
-    expect(modelsLabel.getText()).toStrictEqual('Models');
+Then('I will see the Models header',  async () => {          
+    const modelsLabel = await $("div.page-header>h2");    
+    expect(await modelsLabel.getText()).toStrictEqual('Models');
 });
 
 
